@@ -1,84 +1,83 @@
 
-import React from 'react';
-import { Github, Linkedin } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import React, { useEffect, useState } from 'react';
+
+interface NyanCat {
+  id: number;
+  x: number;
+  y: number;
+  speed: number;
+  direction: 'left' | 'right';
+}
 
 const Index = () => {
+  const [nyans, setNyans] = useState<NyanCat[]>([]);
+
+  useEffect(() => {
+    // Create initial nyan cats
+    const initialNyans = Array.from({ length: 20 }, (_, i) => ({
+      id: i,
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
+      speed: 2 + Math.random() * 3,
+      direction: Math.random() > 0.5 ? 'left' : 'right'
+    }));
+    setNyans(initialNyans);
+
+    // Animation loop
+    const animate = () => {
+      setNyans(prevNyans => prevNyans.map(nyan => {
+        let newX = nyan.direction === 'right' 
+          ? nyan.x + nyan.speed 
+          : nyan.x - nyan.speed;
+
+        // Wrap around screen
+        if (newX > window.innerWidth + 100) newX = -100;
+        if (newX < -100) newX = window.innerWidth + 100;
+
+        return {
+          ...nyan,
+          x: newX,
+        };
+      }));
+    };
+
+    const intervalId = setInterval(animate, 16);
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4">
-      <div className="max-w-4xl w-full mx-auto">
-        <div className="space-y-12 fade-in">
-          {/* Profile Image */}
-          <div className="flex justify-center">
-            <div className="relative w-48 h-48 md:w-56 md:h-56">
-              <img
-                src="/lovable-uploads/851589cf-f0a7-49ab-8b31-9a7f0a39f587.png"
-                alt="Profile"
-                className="w-full h-full object-cover transition-all duration-300 hover:scale-105"
-              />
+    <div className="fixed inset-0 bg-gradient-to-br from-purple-900 via-pink-800 to-purple-900 overflow-hidden">
+      {nyans.map(nyan => (
+        <div
+          key={nyan.id}
+          className="absolute transition-transform duration-100"
+          style={{
+            transform: `translate(${nyan.x}px, ${nyan.y}px) scaleX(${nyan.direction === 'left' ? -1 : 1})`,
+          }}
+        >
+          <div className="relative w-24 h-24">
+            {/* Rainbow trail */}
+            <div className="absolute right-full top-1/2 -translate-y-1/2 w-32 h-8 flex">
+              <div className="w-full h-full bg-red-500 animate-pulse" />
+              <div className="w-full h-full bg-orange-500 animate-pulse" />
+              <div className="w-full h-full bg-yellow-500 animate-pulse" />
+              <div className="w-full h-full bg-green-500 animate-pulse" />
+              <div className="w-full h-full bg-blue-500 animate-pulse" />
+              <div className="w-full h-full bg-purple-500 animate-pulse" />
             </div>
-          </div>
-
-          {/* Hero Section */}
-          <div className="text-center space-y-6">
-            <div className="space-y-2">
-              <h2 className="text-sm font-medium text-gray-500 tracking-wide uppercase">Welcome</h2>
-              <h1 className="text-4xl md:text-6xl font-bold text-gray-900">
-                Hello, I'm a Developer
-              </h1>
+            
+            {/* Nyan cat */}
+            <div className="absolute inset-0 bg-gray-800 rounded-3xl overflow-hidden">
+              <div className="absolute inset-2 bg-gray-400 rounded-2xl">
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-8 h-8 bg-gray-800 rounded-t-full" />
+                <div className="absolute top-2 left-2 w-4 h-4 bg-black rounded-full" />
+                <div className="absolute top-2 right-2 w-4 h-4 bg-black rounded-full" />
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-4 h-2 bg-pink-500 rounded-full" />
+              </div>
             </div>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              I craft elegant solutions with modern web technologies, focusing on creating seamless user experiences.
-            </p>
-          </div>
-
-          {/* Social Links */}
-          <div className="flex items-center justify-center gap-6">
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="glass-card social-link group"
-            >
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2"
-              >
-                <Github className="w-5 h-5" />
-                <span>GitHub</span>
-              </a>
-            </Button>
-
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="glass-card social-link group"
-            >
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2"
-              >
-                <Linkedin className="w-5 h-5" />
-                <span>LinkedIn</span>
-              </a>
-            </Button>
-          </div>
-
-          {/* Additional Info Card */}
-          <div className="glass-card p-8 space-y-4 max-w-2xl mx-auto">
-            <h3 className="text-2xl font-semibold text-gray-900">About Me</h3>
-            <p className="text-gray-600">
-              I'm passionate about creating beautiful, functional, and user-friendly applications. 
-              My expertise includes React, TypeScript, and modern web development practices.
-            </p>
           </div>
         </div>
-      </div>
+      ))}
     </div>
   );
 };
