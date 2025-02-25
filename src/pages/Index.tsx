@@ -1,20 +1,12 @@
 
 import React from 'react';
-import { Github, Linkedin, Settings } from 'lucide-react';
+import { Github, Linkedin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Index = () => {
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4 overflow-hidden">
-      {/* Background Gears */}
-      <div className="fixed inset-0 pointer-events-none">
-        <Settings className="gear w-48 h-48 -left-12 -top-12 text-gray-400" />
-        <Settings className="gear gear-reverse w-64 h-64 -right-16 -top-16 text-gray-400" />
-        <Settings className="gear w-56 h-56 -left-16 -bottom-16 text-gray-400" />
-        <Settings className="gear gear-reverse w-72 h-72 -right-20 -bottom-20 text-gray-400" />
-      </div>
-
-      <div className="max-w-4xl w-full mx-auto relative">
+    <div className="min-h-screen w-full bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4">
+      <div className="max-w-4xl w-full mx-auto">
         <div className="space-y-12 fade-in">
           {/* Profile Image */}
           <div className="flex justify-center">
