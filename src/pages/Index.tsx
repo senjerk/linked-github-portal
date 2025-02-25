@@ -8,6 +8,17 @@ const Index = () => {
     <div className="min-h-screen w-full bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4">
       <div className="max-w-4xl w-full mx-auto">
         <div className="space-y-12 fade-in">
+          {/* Profile Image */}
+          <div className="flex justify-center">
+            <div className="relative w-48 h-48 md:w-56 md:h-56">
+              <img
+                src="/lovable-uploads/851589cf-f0a7-49ab-8b31-9a7f0a39f587.png"
+                alt="Profile"
+                className="w-full h-full object-cover transition-all duration-300 hover:scale-105"
+              />
+            </div>
+          </div>
+
           {/* Hero Section */}
           <div className="text-center space-y-6">
             <div className="space-y-2">
