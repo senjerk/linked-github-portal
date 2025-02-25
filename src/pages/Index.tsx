@@ -1,38 +1,47 @@
 
 import React from 'react';
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Index = () => {
   return (
-    <div className="min-h-screen w-full bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 flex items-center justify-center p-4">
+    <div className="min-h-screen w-full bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4">
       <div className="max-w-4xl w-full mx-auto">
         <div className="space-y-12 fade-in">
+          {/* Profile Image */}
+          <div className="flex justify-center">
+            <div className="relative w-48 h-48 md:w-56 md:h-56">
+              <img
+                src="/lovable-uploads/851589cf-f0a7-49ab-8b31-9a7f0a39f587.png"
+                alt="Profile"
+                className="w-full h-full object-cover transition-all duration-300 hover:scale-105"
+              />
+            </div>
+          </div>
+
           {/* Hero Section */}
           <div className="text-center space-y-6">
-            <div className="space-y-3">
-              <h1 className="text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-emerald-400">
-                Anthony Bagrianov
+            <div className="space-y-2">
+              <h2 className="text-sm font-medium text-gray-500 tracking-wide uppercase">Welcome</h2>
+              <h1 className="text-4xl md:text-6xl font-bold text-gray-900">
+                Hello, I'm a Developer
               </h1>
-              <h2 className="text-xl md:text-2xl font-medium text-gray-300">
-                Senior Backend Developer & Technical Architect
-              </h2>
             </div>
-            <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-              Specializing in high-load financial systems, AI-driven services, and scalable microservices architecture
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              I craft elegant solutions with modern web technologies, focusing on creating seamless user experiences.
             </p>
           </div>
 
           {/* Social Links */}
-          <div className="flex items-center justify-center gap-4 flex-wrap">
+          <div className="flex items-center justify-center gap-6">
             <Button
               asChild
               variant="outline"
               size="lg"
-              className="bg-gray-800/50 border-gray-700 hover:bg-gray-700/50 text-gray-200"
+              className="glass-card social-link group"
             >
               <a
-                href="https://github.com/antibagr"
+                href="https://github.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2"
@@ -46,10 +55,10 @@ const Index = () => {
               asChild
               variant="outline"
               size="lg"
-              className="bg-gray-800/50 border-gray-700 hover:bg-gray-700/50 text-gray-200"
+              className="glass-card social-link group"
             >
               <a
-                href="https://linkedin.com/rudie-duddie"
+                href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2"
@@ -58,91 +67,15 @@ const Index = () => {
                 <span>LinkedIn</span>
               </a>
             </Button>
-
-            <Button
-              asChild
-              variant="outline"
-              size="lg"
-              className="bg-gray-800/50 border-gray-700 hover:bg-gray-700/50 text-gray-200"
-            >
-              <a
-                href="mailto:rudiemeant@gmail.com"
-                className="flex items-center gap-2"
-              >
-                <Mail className="w-5 h-5" />
-                <span>Email</span>
-              </a>
-            </Button>
           </div>
 
-          {/* Experience Section */}
-          <div className="space-y-8">
-            <div className="glass-card p-8 space-y-6 bg-gray-800/30 backdrop-blur">
-              <h3 className="text-2xl font-semibold text-gray-200">Professional Experience</h3>
-              
-              <div className="space-y-8">
-                <div className="space-y-2">
-                  <div className="flex justify-between items-start flex-wrap gap-2">
-                    <h4 className="text-xl font-medium text-blue-400">Senior Backend Developer at Spenxy</h4>
-                    <span className="text-gray-400">Dec 2023 - Present</span>
-                  </div>
-                  <p className="text-gray-300">
-                    Spearheaded development of high-load financial microservices for digital banking platforms. Led successful delivery of a fiat-to-crypto exchange, achieving $1M+ in sales within first month of launch.
-                  </p>
-                </div>
-
-                <div className="space-y-2">
-                  <div className="flex justify-between items-start flex-wrap gap-2">
-                    <h4 className="text-xl font-medium text-blue-400">Team Lead & Architect at Forkitech</h4>
-                    <span className="text-gray-400">Aug 2020 - July 2022</span>
-                  </div>
-                  <p className="text-gray-300">
-                    Architected and implemented a high-capacity sports events data pipeline processing 10,000 concurrent events, powering AI-based outcome prediction services.
-                  </p>
-                </div>
-
-                <div className="space-y-2">
-                  <div className="flex justify-between items-start flex-wrap gap-2">
-                    <h4 className="text-xl font-medium text-blue-400">Senior Backend Developer at Intema.ai</h4>
-                    <span className="text-gray-400">Nov 2022 - Sep 2023</span>
-                  </div>
-                  <p className="text-gray-300">
-                    Built AI-powered voice recognition systems, improving test coverage from 50% to 80% across multiple client projects.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Skills Section */}
-            <div className="glass-card p-8 space-y-4 bg-gray-800/30 backdrop-blur">
-              <h3 className="text-2xl font-semibold text-gray-200">Technical Expertise</h3>
-              <div className="flex flex-wrap gap-2">
-                {[
-                  "Python", "FastAPI", "SQLAlchemy", "PostgreSQL", "Redis", "Kafka",
-                  "Docker", "Kubernetes", "MongoDB", "ClickHouse", "AWS", "gRPC",
-                  "TDD", "DDD", "Microservices", "Async Programming"
-                ].map((skill) => (
-                  <span 
-                    key={skill}
-                    className="px-3 py-1 rounded-full bg-gray-700/50 text-gray-300 text-sm border border-gray-600"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {/* Featured Project */}
-            <div className="glass-card p-8 space-y-4 bg-gray-800/30 backdrop-blur">
-              <h3 className="text-2xl font-semibold text-gray-200">Featured Project</h3>
-              <div className="space-y-2">
-                <h4 className="text-xl font-medium text-blue-400">HealthPulse Bot</h4>
-                <p className="text-gray-300">
-                  Engineered a B2B Telegram messenger bot enabling secure, anonymous communication. 
-                  Implemented advanced privacy features using MTProto Telegram protocol for enhanced data security.
-                </p>
-              </div>
-            </div>
+          {/* Additional Info Card */}
+          <div className="glass-card p-8 space-y-4 max-w-2xl mx-auto">
+            <h3 className="text-2xl font-semibold text-gray-900">About Me</h3>
+            <p className="text-gray-600">
+              I'm passionate about creating beautiful, functional, and user-friendly applications. 
+              My expertise includes React, TypeScript, and modern web development practices.
+            </p>
           </div>
         </div>
       </div>
