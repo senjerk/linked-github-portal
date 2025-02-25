@@ -14,12 +14,12 @@ const Index = () => {
 
   useEffect(() => {
     // Create initial nyan cats
-    const initialNyans = Array.from({ length: 20 }, (_, i) => ({
+    const initialNyans: NyanCat[] = Array.from({ length: 20 }, (_, i) => ({
       id: i,
       x: Math.random() * window.innerWidth,
       y: Math.random() * window.innerHeight,
       speed: 2 + Math.random() * 3,
-      direction: Math.random() > 0.5 ? 'left' : 'right'
+      direction: Math.random() > 0.5 ? 'left' : 'right' as const
     }));
     setNyans(initialNyans);
 
