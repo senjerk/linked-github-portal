@@ -64,6 +64,7 @@
   transform-origin: center;
   transform-style: preserve-3d;
   perspective: 1000px;
+  z-index: -1;
 }
 
 .gear-reverse {

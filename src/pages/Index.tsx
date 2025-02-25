@@ -7,11 +7,11 @@ const Index = () => {
   return (
     <div className="min-h-screen w-full bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-4 overflow-hidden">
       {/* Background Gears */}
-      <div className="fixed inset-0 pointer-events-none">
-        <Settings className="gear w-48 h-48 -left-12 -top-12 text-gray-400" />
-        <Settings className="gear gear-reverse w-64 h-64 -right-16 -top-16 text-gray-400" />
-        <Settings className="gear w-56 h-56 -left-16 -bottom-16 text-gray-400" />
-        <Settings className="gear gear-reverse w-72 h-72 -right-20 -bottom-20 text-gray-400" />
+      <div className="fixed inset-0 pointer-events-none flex items-center justify-center">
+        <Settings className="gear w-24 h-24 -translate-x-16 -translate-y-16 text-gray-400" />
+        <Settings className="gear gear-reverse w-20 h-20 translate-x-20 translate-y-20 text-gray-400" />
+        <Settings className="gear w-16 h-16 -translate-x-32 translate-y-8 text-gray-400" />
+        <Settings className="gear gear-reverse w-28 h-28 translate-x-8 -translate-y-24 text-gray-400" />
       </div>
 
       <div className="max-w-4xl w-full mx-auto relative">
