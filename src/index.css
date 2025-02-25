@@ -57,3 +57,34 @@
     transform: translateY(0);
   }
 }
+
+.gear {
+  @apply absolute opacity-10;
+  animation: spin 20s linear infinite;
+  transform-origin: center;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  z-index: -1;
+}
+
+.gear-reverse {
+  animation: spin-reverse 15s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
